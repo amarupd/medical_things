@@ -1,13 +1,260 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* ✅ Navbar Styling */
+.navbar {
+  background: #ffffff; /* Cream white */
+  color: #00a2ff; /* Sky blue */
+  font-size: 22px;
+  font-weight: bold;
+  padding: 15px;
+  border-bottom: 2px solid #ddd;
+  height: 50px;
+
+  /* ✅ Centered and Fixed */
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ✅ Prevent Overlapping */
+.container {
+  margin-top: 70px; /* Ensures content starts below navbar */
+  display: flex;
+  height: calc(100vh - 70px);
+}
+
+/* ✅ Sidebar Base */
+.sidebar {
+  background: #f8f9fa;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  transition: all 0.3s ease-in-out;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ✅ Expanded Sidebar */
+.sidebar.expanded {
+  width: 250px;
+}
+
+/* ✅ Collapsed Sidebar */
+.sidebar.collapsed {
+  width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+/* ✅ Sidebar Label (Vertical When Collapsed) */
+.sidebar-label {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  color: #007bff;
+}
+
+.sidebar.collapsed .sidebar-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+}
+
+/* ✅ Toggle Button */
+.toggle-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* ✅ Search & Dropdown */
+.search-box, .dropdown {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* ✅ Thumbnail Grid */
+.thumbnail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+  padding-bottom: 10px;
+}
+
+.thumbnail {
+  width: 100%;
+  height: 100px;
+  background: #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.thumbnail:hover {
+  transform: scale(1.05);
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+/* ✅ Viewer Section */
+.viewer-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  overflow: auto;
+  padding: 10px;
+}
+
+/* ✅ Viewer Header */
+.viewer-header {
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  background: #f4f4f4;
+  border-bottom: 2px solid #ddd;
+}
+
+/* ✅ Buttons */
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.button-group .btn {
+  flex: 1;
+  text-align: center;
+  font-size: 16px;
+  padding: 12px;
+  border: none;
+  cursor: pointer;
+  background: #ffffff;
+  color: #00a2ff;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 1px solid #00a2ff;
+  transition: 0.3s;
+}
+
+.button-group .btn:hover {
+  background: #ffedb8;
+}
+
+/* ✅ Image Viewer */
+#openseadragon-viewer {
+  flex: 1;
+  border: 1px solid black;
+  width: 100%;
+  height: 600px;
+}
+
+/* ✅ Sidebar Header */
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  background: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+}
+
+/* ✅ Tree Section */
+.sidebar-section {
+  border-bottom: 1px solid #ddd;
+}
+
+.tree-content {
+  padding: 10px;
+  background: white;
+}
+
+.tree-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.tree-list li {
+  padding: 5px;
+  font-size: 14px;
+  color: #555;
+}
+
+/* ✅ Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.pagination-btn {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination-btn:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+/* ✅ Dropdown Container */
+.dropdown-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.dropdown {
+  width: 48%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.dropdown:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* ✅ Centered Navbar Title */
+.navbar-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
